@@ -1,5 +1,5 @@
-// Function to scan the screen for math problems and solve them
-function scanAndSolveMathProblems(screenContent) {
+// Redefine the scanAndSolveMathProblems function using let
+let scanAndSolveMathProblems = function(screenContent) {
     try {
         // Regular expression to match math problems
         let mathProblemRegex = /[0-9+\-*/.]+/g;
@@ -19,10 +19,10 @@ function scanAndSolveMathProblems(screenContent) {
     } catch (error) {
         console.error('Error occurred while scanning and solving math problems:', error);
     }
-}
+};
 
 // For testing purposes, a hardcoded string containing some math problems
 let screenContent = "2 + 2\n3 * 5\n10 / 2";
 
 // Call the function to scan and solve math problems
-scanAndSolveMathProblems(screenContent);
+scanAndSol
