@@ -1,5 +1,5 @@
-// Function to scan the screen for math problems and solve them
-function scanAndSolveMathProblems() {
+// Redefine the scanAndSolveMathProblems function using let
+let scanAndSolveMathProblems = function() {
     try {
         // Implement screen scanning logic here
         // For simplicity, let's assume we have a function called captureScreenContent() to capture the screen content
@@ -23,4 +23,4 @@ function scanAndSolveMathProblems() {
     } catch (error) {
         console.error('Error occurred while scanning and solving math problems:', error);
     }
-}
+};
