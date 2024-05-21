@@ -3,8 +3,8 @@ function scanAndSolveMathProblems(screenContent) {
     let answers = []; // Array to store the answers
 
     try {
-        // Regular expression to match math problems
-        let mathProblemRegex = /[0-9+\-*/.]+/g;
+        // Regular expression to match valid math problems
+        let mathProblemRegex = /\b\d+(\.\d+)?\s*[-+*\/]\s*\d+(\.\d+)?\b/g;
 
         // Find all math problems in the screen content
         let mathProblems = screenContent.match(mathProblemRegex);
@@ -24,7 +24,7 @@ function scanAndSolveMathProblems(screenContent) {
 }
 
 // For testing purposes, a hardcoded string containing some math problems
-let screenContent = "2 + 2\n3 * 5\n10 / 2";
+let screenContent = "2 + 2\n3 * 5\n10 / 2\nThis is not a valid math problem";
 
 // Call the function to scan and solve math problems silently
 let answers = scanAndSolveMathProblems(screenContent);
