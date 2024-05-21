@@ -10,8 +10,12 @@ function calculateMathExpression(expression) {
 // Function to read input and calculate result
 function readAndCalculate() {
     let expression = prompt("Enter a math expression:");
-    let result = calculateMathExpression(expression);
-    console.log("Result:", result);
+    if (expression) {
+        let result = calculateMathExpression(expression);
+        console.log("Result:", result);
+    } else {
+        console.log("No expression entered.");
+    }
 }
 
 // Call readAndCalculate to prompt user input
