@@ -1,35 +1,41 @@
-// Function to activate/deactivate the math problem scanner
-function toggleScanner() {
-    // Implement logic to start/stop the scanner
-    if (/* scanner is not active */) {
-        // Start the scanner
-        // Add event listener to detect math problems
-        // Example: document.addEventListener('mousemove', detectMathProblems);
-    } else {
-        // Stop the scanner
-        // Remove event listener
-        // Example: document.removeEventListener('mousemove', detectMathProblems);
+// Function to evaluate math expressions
+function calculateMathExpression(expression) {
+    try {
+        return eval(expression);
+    } catch (error) {
+        return "Invalid expression";
     }
 }
 
-// Function to detect math problems at the mouse cursor position
-function detectMathProblems(event) {
-    // Implement logic to detect math problems here
-    // Example: Get text under mouse cursor and check if it's a math problem
+// Function to read input and calculate result
+function readAndCalculate() {
+    let expression = prompt("Enter a math expression:");
+    let result = calculateMathExpression(expression);
+    console.log("Result:", result);
 }
 
-// Check if the script is running in the console or in a webpage
-if (typeof window === 'undefined') {
-    // Running in console
-    // You can call functions directly, e.g., toggleScanner();
-    console.log("Script is running in console.");
-} else {
-    // Running in webpage
-    // Add a button to activate/deactivate the scanner
-    var activateButton = document.createElement('button');
-    activateButton.textContent = 'Activate';
-    activateButton.addEventListener('click', toggleScanner);
-
-    // Append the button to the body of the webpage
-    document.body.appendChild(activateButton);
+// Function to activate the calculator
+function activateCalculator() {
+    console.log("Calculator activated.");
+    console.log("You can now input math expressions.");
+    readAndCalculate();
 }
+
+// Function to deactivate the calculator
+function deactivateCalculator() {
+    console.log("Calculator deactivated.");
+}
+
+// Activate and deactivate buttons
+function activateButton() {
+    activateCalculator();
+}
+
+function deactivateButton() {
+    deactivateCalculator();
+}
+
+// Usage example:
+// To activate: activateButton()
+// To input a math expression: readAndCalculate()
+// To deactivate: deactivateButton()
