@@ -14,28 +14,5 @@ function readAndCalculate() {
     console.log("Result:", result);
 }
 
-// Function to activate the calculator
-function activateCalculator() {
-    console.log("Calculator activated.");
-    console.log("You can now input math expressions.");
-    readAndCalculate();
-}
-
-// Function to deactivate the calculator
-function deactivateCalculator() {
-    console.log("Calculator deactivated.");
-}
-
-// Activate and deactivate buttons
-function activateButton() {
-    activateCalculator();
-}
-
-function deactivateButton() {
-    deactivateCalculator();
-}
-
-// Usage example:
-// To activate: activateButton()
-// To input a math expression: readAndCalculate()
-// To deactivate: deactivateButton()
+// Call readAndCalculate to prompt user input
+readAndCalculate();
