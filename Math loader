@@ -1,0 +1,16 @@
+function scanForMathProblems() {
+    var mathRegex = /[0-9]+(\s*[\+\-\*\/]\s*[0-9]+)+/g;
+    var pageContent = document.body.innerText;
+    var mathExpressions = pageContent.match(mathRegex);
+
+    if (mathExpressions && mathExpressions.length > 0) {
+        for (var i = 0; i < mathExpressions.length; i++) {
+            var mathExpression = mathExpressions[i];
+            var answer;
+            try {
+                answer = eval(mathExpression);
+            } catch (error) {
+                console.error("Error evaluating expression:", error);
+                continue;
+            }
+            c
