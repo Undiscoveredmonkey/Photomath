@@ -1,77 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Problem Detector</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        
-        .container {
-            text-align: center;
-        }
-        
-        h1 {
-            margin-bottom: 20px;
-        }
-        
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 16px;
-        }
-        
-        button:hover {
-            background-color: #0056b3;
-        }
-        
-        #results {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Math Problem Detector</h1>
-        <button id="activateBtn">Activate</button>
-        <button id="deactivateBtn">Deactivate</button>
-        <div id="results"></div>
-    </div>
+let isActivated = false;
 
-    <script>
-        let isActivated = false;
+function activateScanner() {
+    isActivated = true;
+    console.log('Screen scanning activated.');
+    // Implement screen scanning logic here
+}
 
-        // Function to handle screen scanning activation
-        document.getElementById('activateBtn').addEventListener('click', () => {
-            isActivated = true;
-            console.log('Screen scanning activated.');
-            // Implement screen scanning logic here
-            // For demonstration purposes, let's just log a message
-            document.getElementById('results').innerText = 'Screen scanning activated. Waiting for implementation...';
-        });
+function deactivateScanner() {
+    isActivated = false;
+    console.log('Screen scanning deactivated.');
+    // Implement screen scanning deactivation logic here
+}
 
-        // Function to handle screen scanning deactivation
-        document.getElementById('deactivateBtn').addEventListener('click', () => {
-            isActivated = false;
-            console.log('Screen scanning deactivated.');
-            // Implement screen scanning deactivation logic here
-            // For demonstration purposes, let's just clear the results
-            document.getElementById('results').innerText = '';
-        });
-    </script>
-</body>
-</html>
+// Function to process user input
+function processInput(input) {
+    input = input.trim().toLowerCase();
+    if (input === 'activate') {
+        activateScanner();
+    } else if (input === 'deactivate') {
+        deactivateScanner();
+    } else {
+        console.log('Invalid command. Please enter "activate" or "deactivate".');
+    }
+}
+
+// Function to listen for user input
+function listenForInput() {
+    let input = prompt('Enter "activate" to activate scanner, or "deactivate" to deactivate:');
+    if (input) {
+        processInput(input);
+    } else {
+        console.log('No input received.');
+    }
+}
+
+// Call listenForInput to start listening for user input
+listenForInput();
