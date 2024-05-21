@@ -6,15 +6,15 @@ function scanAndSolveMathProblems() {
         let screenContent = captureScreenContent();
 
         // Regular expression to match math problems
-        let mathProblemRegex = /[0-9+\-*/.]+/g;
+        const mathProblemRegex = /[0-9+\-*/.]+/g;
 
         // Find all math problems in the screen content
-        let mathProblems = screenContent.match(mathProblemRegex);
+        const mathProblems = screenContent.match(mathProblemRegex);
 
         if (mathProblems && mathProblems.length > 0) {
             // Solve each math problem and display the answer
             mathProblems.forEach(problem => {
-                let answer = eval(problem); // Evaluate the math expression
+                const answer = eval(problem); // Evaluate the math expression
                 console.log(`Math problem: ${problem}, Answer: ${answer}`);
             });
         } else {
