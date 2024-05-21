@@ -46,18 +46,24 @@ function deactivateScanner() {
 // Check if running in a browser environment
 if (typeof window !== 'undefined') {
     // Event listener for the "activate" button
-    document.getElementById("activateBtn").addEventListener("click", function() {
-        if (!isActivated) {
-            activateScanner();
-        }
-    });
+    let activateBtn = document.getElementById("activateBtn");
+    if (activateBtn) {
+        activateBtn.addEventListener("click", function() {
+            if (!isActivated) {
+                activateScanner();
+            }
+        });
+    }
 
     // Event listener for the "deactivate" button
-    document.getElementById("deactivateBtn").addEventListener("click", function() {
-        if (isActivated) {
-            deactivateScanner();
-        }
-    });
+    let deactivateBtn = document.getElementById("deactivateBtn");
+    if (deactivateBtn) {
+        deactivateBtn.addEventListener("click", function() {
+            if (isActivated) {
+                deactivateScanner();
+            }
+        });
+    }
 } else {
     // Running in console environment
     // Prompt user to manually call activateScanner() and deactivateScanner() functions
