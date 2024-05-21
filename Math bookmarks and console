@@ -1,28 +1,77 @@
-let isActivated = false;
-
-// Activate button click event handler
-function activateButton() {
-    isActivated = true;
-    console.log("Screen scanning activated.");
-    captureScreen();
-}
-
-// Function to capture screen content
-function captureScreen() {
-    navigator.mediaDevices.getDisplayMedia({ video: true })
-    .then(stream => {
-        let videoTrack = stream.getVideoTracks()[0];
-        let imageCapture = new ImageCapture(videoTrack);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Problem Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
         
-        // Periodically capture frames
-        setInterval(() => {
-            if(isActivated) {
-                imageCapture.grabFrame()
-                .then(imageBitmap => {
-                    // Process the captured frame (e.g., use OCR)
-                    processCapturedFrame(imageBitmap);
-                })
-                .catch(error => {
-                    console.error('Error capturing frame: ', error);
-                });
-         
+        .container {
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Math Problem Detector</h1>
+        <button id="activateBtn">Activate</button>
+        <button id="deactivateBtn">Deactivate</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let isActivated = false;
+
+        // Function to handle screen scanning activation
+        document.getElementById('activateBtn').addEventListener('click', () => {
+            isActivated = true;
+            console.log('Screen scanning activated.');
+            // Implement screen scanning logic here
+            // For demonstration purposes, let's just log a message
+            document.getElementById('results').innerText = 'Screen scanning activated. Waiting for implementation...';
+        });
+
+        // Function to handle screen scanning deactivation
+        document.getElementById('deactivateBtn').addEventListener('click', () => {
+            isActivated = false;
+            console.log('Screen scanning deactivated.');
+            // Implement screen scanning deactivation logic here
+            // For demonstration purposes, let's just clear the results
+            document.getElementById('results').innerText = '';
+        });
+    </script>
+</body>
+</html>
