@@ -10,8 +10,12 @@ let scanAndSolveMathProblems = function(screenContent) {
         if (mathProblems && mathProblems.length > 0) {
             // Solve each math problem and display the answer
             mathProblems.forEach(problem => {
-                let answer = eval(problem); // Evaluate the math expression
-                console.log(`Math problem: ${problem}, Answer: ${answer}`);
+                try {
+                    let answer = eval(problem); // Evaluate the math expression
+                    console.log(`Math problem: ${problem}, Answer: ${answer}`);
+                } catch (error) {
+                    console.error('Error occurred while evaluating math problem:', error);
+                }
             });
         } else {
             console.log('No math problems found on the screen.');
