@@ -1,0 +1,35 @@
+// Function to activate/deactivate the math problem scanner
+function toggleScanner() {
+    // Implement logic to start/stop the scanner
+    if (/* scanner is not active */) {
+        // Start the scanner
+        // Add event listener to detect math problems
+        // Example: document.addEventListener('mousemove', detectMathProblems);
+    } else {
+        // Stop the scanner
+        // Remove event listener
+        // Example: document.removeEventListener('mousemove', detectMathProblems);
+    }
+}
+
+// Function to detect math problems at the mouse cursor position
+function detectMathProblems(event) {
+    // Implement logic to detect math problems here
+    // Example: Get text under mouse cursor and check if it's a math problem
+}
+
+// Check if the script is running in the console or in a webpage
+if (typeof window === 'undefined') {
+    // Running in console
+    // You can call functions directly, e.g., toggleScanner();
+    console.log("Script is running in console.");
+} else {
+    // Running in webpage
+    // Add a button to activate/deactivate the scanner
+    var activateButton = document.createElement('button');
+    activateButton.textContent = 'Activate';
+    activateButton.addEventListener('click', toggleScanner);
+
+    // Append the button to the body of the webpage
+    document.body.appendChild(activateButton);
+}
