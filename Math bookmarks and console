@@ -1,22 +1,28 @@
-// Function to evaluate math expressions
-function calculateMathExpression(expression) {
-    try {
-        return eval(expression);
-    } catch (error) {
-        return "Invalid expression";
-    }
+let isActivated = false;
+
+// Activate button click event handler
+function activateButton() {
+    isActivated = true;
+    console.log("Screen scanning activated.");
+    captureScreen();
 }
 
-// Function to read input and calculate result
-function readAndCalculate() {
-    let expression = prompt("Enter a math expression:");
-    if (expression) {
-        let result = calculateMathExpression(expression);
-        console.log("Result:", result);
-    } else {
-        console.log("No expression entered.");
-    }
-}
-
-// Call readAndCalculate to prompt user input
-readAndCalculate();
+// Function to capture screen content
+function captureScreen() {
+    navigator.mediaDevices.getDisplayMedia({ video: true })
+    .then(stream => {
+        let videoTrack = stream.getVideoTracks()[0];
+        let imageCapture = new ImageCapture(videoTrack);
+        
+        // Periodically capture frames
+        setInterval(() => {
+            if(isActivated) {
+                imageCapture.grabFrame()
+                .then(imageBitmap => {
+                    // Process the captured frame (e.g., use OCR)
+                    processCapturedFrame(imageBitmap);
+                })
+                .catch(error => {
+                    console.error('Error capturing frame: ', error);
+                });
+         
