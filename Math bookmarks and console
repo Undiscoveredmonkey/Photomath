@@ -1,35 +1,3 @@
-let isActivated = false;
-
-// Function to scan the screen for math problems and solve them
-function scanAndSolveMathProblems() {
-    // Implement screen scanning logic here
-    // For simplicity, let's assume we have a function called captureScreenContent() to capture the screen content
-    let screenContent = captureScreenContent();
-
-    // Regular expression to match math problems
-    let mathProblemRegex = /[0-9+\-*/.]+/g;
-
-    // Find all math problems in the screen content
-    let mathProblems = screenContent.match(mathProblemRegex);
-
-    if (mathProblems && mathProblems.length > 0) {
-        // Solve each math problem and display the answer
-        mathProblems.forEach(problem => {
-            let answer = eval(problem); // Evaluate the math expression
-            console.log(`Math problem: ${problem}, Answer: ${answer}`);
-        });
-    } else {
-        console.log('No math problems found on the screen.');
-    }
-}
-
-// Function to capture the screen content
-function captureScreenContent() {
-    // This function will depend on the environment you're working in (e.g., browser, console).
-    // For demonstration purposes, we'll just return a dummy screen content.
-    return "2 + 2\n3 * 5\n10 / 2";
-}
-
 // Function to activate the scanner
 function activateScanner() {
     isActivated = true;
@@ -43,30 +11,8 @@ function deactivateScanner() {
     console.log('Screen scanning deactivated.');
 }
 
-// Check if running in a browser environment
-if (typeof window !== 'undefined') {
-    // Event listener for the "activate" button
-    let activateBtn = document.getElementById("activateBtn");
-    if (activateBtn) {
-        activateBtn.addEventListener("click", function() {
-            if (!isActivated) {
-                activateScanner();
-            }
-        });
-    }
+// Call activateScanner() to start scanning
+activateScanner();
 
-    // Event listener for the "deactivate" button
-    let deactivateBtn = document.getElementById("deactivateBtn");
-    if (deactivateBtn) {
-        deactivateBtn.addEventListener("click", function() {
-            if (isActivated) {
-                deactivateScanner();
-            }
-        });
-    }
-} else {
-    // Running in console environment
-    // Prompt user to manually call activateScanner() and deactivateScanner() functions
-    console.log('To activate the scanner, call activateScanner() function.');
-    console.log('To deactivate the scanner, call deactivateScanner() function.');
-}
+// Call deactivateScanner() to stop scanning
+deactivateScanner();
