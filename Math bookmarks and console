@@ -1,10 +1,6 @@
 // Function to scan the screen for math problems and solve them
-let scanAndSolveMathProblems = function() {
+function scanAndSolveMathProblems(screenContent) {
     try {
-        // Implement screen scanning logic here
-        // For simplicity, let's assume we have a function called captureScreenContent() to capture the screen content
-        let screenContent = captureScreenContent();
-
         // Regular expression to match math problems
         let mathProblemRegex = /[0-9+\-*/.]+/g;
 
@@ -14,7 +10,6 @@ let scanAndSolveMathProblems = function() {
         if (mathProblems && mathProblems.length > 0) {
             // Solve each math problem and display the answer
             mathProblems.forEach(problem => {
-                console.log('Evaluating math problem:', problem); // Log the math problem
                 let answer = eval(problem); // Evaluate the math expression
                 console.log(`Math problem: ${problem}, Answer: ${answer}`);
             });
@@ -24,4 +19,10 @@ let scanAndSolveMathProblems = function() {
     } catch (error) {
         console.error('Error occurred while scanning and solving math problems:', error);
     }
-};
+}
+
+// For testing purposes, a hardcoded string containing some math problems
+let screenContent = "2 + 2\n3 * 5\n10 / 2";
+
+// Call the function to scan and solve math problems
+scanAndSolveMathProblems(screenContent);
