@@ -1,50 +1,26 @@
 public class MathSolver {
     public static void main(String[] args) {
-        // Create a Scanner object to read input from the console
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-        
-        // Prompt the user to enter a math equation/problem
         System.out.print("Enter a math equation (e.g., 2 + 2, 3 * 4): ");
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
         String equation = scanner.nextLine();
-        
-        // Calculate the result
         double result = evaluate(equation);
-        
-        // Display the result
         System.out.println("The answer is: " + result);
-        
-        // Close the scanner
         scanner.close();
     }
 
-    // A simple method to evaluate basic math expressions
     public static double evaluate(String equation) {
-        // Split the equation into parts
         String[] parts = equation.split(" ");
         double num1 = Double.parseDouble(parts[0]);
         String operator = parts[1];
         double num2 = Double.parseDouble(parts[2]);
         double result = 0;
-        
-        // Perform the operation
         switch (operator) {
-            case "+":
-                result = num1 + num2;
-                break;
-            case "-":
-                result = num1 - num2;
-                break;
-            case "*":
-                result = num1 * num2;
-                break;
-            case "/":
-                result = num1 / num2;
-                break;
-            default:
-                System.out.println("Invalid operator. Please use +, -, *, or /.");
-                System.exit(1);
+            case "+": result = num1 + num2; break;
+            case "-": result = num1 - num2; break;
+            case "*": result = num1 * num2; break;
+            case "/": result = num1 / num2; break;
+            default: System.out.println("Invalid operator. Use +, -, *, or /."); System.exit(1);
         }
-        
         return result;
     }
 }
