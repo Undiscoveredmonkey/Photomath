@@ -5,16 +5,12 @@ public class ConsoleCalculator {
             System.out.print("Enter a math equation (e.g., 2 + 2, 3 * 4): ");
             String input = scanner.nextLine().replaceAll("\\s+", "");
             String[] parts = input.split("(?<=[-+*/])|(?=[-+*/])");
-            if (parts.length != 3) {
-                System.out.println("Invalid input!");
-                continue;
-            }
+            if (parts.length != 3) continue;
             double operand1, operand2;
             try {
                 operand1 = Double.parseDouble(parts[0]);
                 operand2 = Double.parseDouble(parts[2]);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input!");
                 continue;
             }
             char operator = parts[1].charAt(0);
