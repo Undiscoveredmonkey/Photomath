@@ -1,33 +1,45 @@
-// Function to scan the screen for math problems and solve them
-function scanAndSolveMathProblems(screenContent) {
-    let answers = []; // Array to store the answers
+import javax.swing.JOptionPane;
 
-    try {
-        // Regular expression to match valid math problems
-        let mathProblemRegex = /\b\d+(\.\d+)?\s*[-+*\/]\s*\d+(\.\d+)?\b/g;
-
-        // Find all math problems in the screen content
-        let mathProblems = screenContent.match(mathProblemRegex);
-
-        if (mathProblems && mathProblems.length > 0) {
-            // Solve each math problem and store the answer
-            mathProblems.forEach(problem => {
-                let answer = eval(problem); // Evaluate the math expression
-                answers.push({ problem: problem, answer: answer }); // Store problem and answer
-            });
-        }
-    } catch (error) {
-        console.error('Error occurred while scanning and solving math problems:', error);
+public class MathSolver {
+    public static void main(String[] args) {
+        // Prompt the user to enter a math equation/problem
+        String equation = JOptionPane.showInputDialog("Enter a math equation (e.g., 2 + 2, 3 * 4):");
+        
+        // Calculate the result
+        double result = evaluate(equation);
+        
+        // Display the result
+        JOptionPane.showMessageDialog(null, "The answer is: " + result);
     }
 
-    return answers; // Return the array of answers
+    // A simple method to evaluate basic math expressions
+    public static double evaluate(String equation) {
+        // Split the equation into parts
+        String[] parts = equation.split(" ");
+        double num1 = Double.parseDouble(parts[0]);
+        String operator = parts[1];
+        double num2 = Double.parseDouble(parts[2]);
+        double result = 0;
+        
+        // Perform the operation
+        switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Invalid operator. Please use +, -, *, or /.");
+                System.exit(1);
+        }
+        
+        return result;
+    }
 }
-
-// For testing purposes, a hardcoded string containing some math problems
-let screenContent = "2 + 2\n3 * 5\n10 / 2\nThis is not a valid math problem";
-
-// Call the function to scan and solve math problems silently
-let answers = scanAndSolveMathProblems(screenContent);
-
-// Output the answers (optional)
-console.log('Answers:', answers);
