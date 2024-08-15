@@ -3,13 +3,19 @@ import java.util.Scanner;
 public class ConsoleCalculator {
 
     public static void main(String[] args) {
+        // Create a Scanner object for user input
         Scanner scanner = new Scanner(System.in);
 
+        // Prompt the user to enter a math equation
         System.out.print("Enter a math equation (e.g., 2 + 2): ");
+        
+        // Read the entire line of input
         String equation = scanner.nextLine();
 
+        // Output the entered equation
         System.out.println("You entered: " + equation);
 
+        // Close the scanner
         scanner.close();
     }
 }
