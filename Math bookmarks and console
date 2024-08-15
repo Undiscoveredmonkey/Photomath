@@ -1,42 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+import java.util.Scanner;
 
-    <script>
-        (function() {
-            const scanButton = document.createElement('button');
-            scanButton.textContent = 'Scan';
-            scanButton.style.position = 'fixed';
-            scanButton.style.top = '10px';
-            scanButton.style.right = '10px';
-            scanButton.style.zIndex = '9999';
-            document.body.appendChild(scanButton);
+public class ConsoleCalculator {
 
-            const resetButton = document.createElement('button');
-            resetButton.textContent = 'Reset';
-            resetButton.style.position = 'fixed';
-            resetButton.style.top = '40px';
-            resetButton.style.right = '10px';
-            resetButton.style.zIndex = '9999';
-            document.body.appendChild(resetButton);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            let inputs = [];
+        System.out.print("Enter a math equation (e.g., 2 + 2): ");
+        String equation = scanner.nextLine();
 
-            scanButton.addEventListener('click', () => {
-                inputs = Array.from(document.querySelectorAll('input[type="text"], input[type="number"]'));
-                inputs.forEach(input => input.value = 'Answer');
-            });
+        System.out.println("You entered: " + equation);
 
-            resetButton.addEventListener('click', () => {
-                inputs.forEach(input => input.value = '');
-                inputs = [];
-            });
-        })();
-    </script>
-</body>
-</html>
+        scanner.close();
+    }
+}
